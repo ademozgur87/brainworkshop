@@ -1,4 +1,7 @@
 Brain Workshop 4.8.4 Türkçe versiyonu + Duygu ifadesi içeren görsel uyaranlar
+Program Paul Hoskinson tarafından oluşturulmuştur ve Jonathan Toomim ile birlikte sürdürülmektedir (https://brainworkshop.sourceforge.net).
+Türkçeleştirme, Görsel duygu uyaran verisetlerinin eklenmesi ve programın amaca uygun çalışması için düzenlemeler;
+Ontolab (Hacettepe Üniversitesi) tarafından yapılmıştır.
 
 Python 2.6.1 ile çalışmaktadır.
 
