@@ -1,3 +1,11 @@
+Brain Workshop 4.8.4 Türkçe versiyonu + Duygu ifadesi içeren görsel uyaranlar
+
+Python 2.6.1 ile çalışmaktadır.
+
+Programın kaynak kodlarıyla ilgili yönerge;
+https://brainworkshop.sourceforge.net/source-win32.html
+
+-------------------------------------------------------------------
 Brain Workshop: a Dual N-Back game in Python
 
 Thank you for downloading Brain Workshop.
