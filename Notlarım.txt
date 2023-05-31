@@ -1,0 +1,62 @@
+1-Gridleri büyütmek için config dosyasında aşağıdaki değeri True yapabiliriz
+FIELD_EXPAND=
+
+2-Armanın Ses Dosyaları Eklenecek
+OK
+
+3-Çeviri tamam kontrolü sağlanacak
+OK
+
+4-Görsel Sayılarının Kontrolü Sağlanacak, görsel setin sadece 7 tane olması durumunda random fonksiyonları 8 tane uyarana göre çalıştığı için hata veriyor. 
+Ok
+
+5-Yeni Kullanıcı Çalışmadı
+Ok
+
+
+Duzenlenen yerler;
+1-Belgenin ilk satırına Türkçe karakter sorunu için şunlar eklendi
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+2-Config açıklamasına şunlar eklendi Türkçe karakter sorunu olmaması için Türkçe karakter kullanılmadı (ENABLE_MOUSE = True, satırı sonrasına eklendi). Config dosyası oluşturulmamışsa bu açıklama ile oluşturuluyor. Varsayılan olarak değerler aşağıdaki gibidir.
+# Emotion modu (Adm)
+# Gorsellerde renk maskelemesini kaldirir, sadece gorselin renkleri gorunur
+# Diger turlu (False) gorsellere renk maskelemesi olur
+# Color secenegi(anasayfadaki), aktive  edilse de renk uygulamasi yapilmaz
+EMOTION = True
+#Bazi durumlarda gorsel uyaran sayimiz 8in altinda olabiliyor. 
+#Ornegin Karolinska duygu veri setinde sadece 7 duygu turu var. 
+#Bu durumda asagidaki sayiyi 7 yapmaliyiz. Bunun disinda 8 olarak kalabilir
+VISUAL_NUMBER=8 
+
+3-Kodlarda şekillere renk bindirmesi yapılmaması için aşağıdaki kodlar düzenlendi
+            if cfg.EMOTION != True: #(Adm - color overlayi Emotion modda iptal ediyoruz)
+                self.square.color = self.color[:3]
+
+            if cfg.EMOTION != True: #(Adm - color overlayi Emotion modda iptal ediyoruz)
+                # initiate square animation
+                self.age = 0.0
+                #self.animate_square(0)
+                pyglet.clock.schedule_interval(self.animate_square, 1/60.)
+
+4-Emotion görsel setleri (2 tane: emotion-comic-female, emotion-krlns-male), res/sprites klasörüne eklendi.
+
+5-Armanın seslendirmeleri eklendi, operations ve letters klasorleri onemli, operations ismi degistirilmeden Turkce seslendirmeler eklendi. letters ise harfler olarak adlandırıldı. kodlar içerisinde 'letters' kalsörünü çağıran yapı 'harfler' olarak değiştirildi. Config'deki letters da değiştirildi.
+
+6- Gorsel uyaranlarda 8'den az uyaran olduğunda ne kadar görsel varsa ona göre (VISUAL_NUMBER parametresi) deger alan kodlar duzenlendi.
+
+    visuals[0].choose_random_images(cfg.VISUAL_NUMBER) # (Adm) Görsel imaj seçimi sayısı
+
+    mode.current_stim['vis'] = random.randint(1, cfg.VISUAL_NUMBER) # (Adm) Gorsel icin 8den az arasından secim
+
+
+7-Turkce ceviri yapıldı.Çeviri alanınlarının önünde alt çizgi (_) karakteri yer alıyor. Bir de tırnakların önüne u karakteri konularak Türkçe karakterlerin doğru çalışması sağlandı.
+8-GameSelect class'ında Turkce menu kariliklari icin 'names' yazıldı
+        names['color'] = _(u"Renk kullan")
+        names['image'] = _(u"Resim kullan")
+        names['audio'] = _(u"Ses kullan")
+        names['audio2'] = _(u"Ses2 kullan")
+        names['arithmetic'] = _(u"Aritmetik kullan")
+
+9-Anasayfa görseline ontolab logosu eklendi.
