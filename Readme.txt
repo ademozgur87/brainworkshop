@@ -1,3 +1,14 @@
+erDiagram
+          CUSTOMER }|..|{ DELIVERY-ADDRESS : has
+          CUSTOMER ||--o{ ORDER : places
+          CUSTOMER ||--o{ INVOICE : "liable for"
+          DELIVERY-ADDRESS ||--o{ ORDER : receives
+          INVOICE ||--|{ ORDER : covers
+          ORDER ||--|{ ORDER-ITEM : includes
+          PRODUCT-CATEGORY ||--|{ PRODUCT : contains
+          PRODUCT ||--o{ ORDER-ITEM : "ordered in"
+
+
 Brain Workshop 4.8.4 Türkçe versiyonu + Duygu ifadesi içeren görsel uyaranlar
 Program Paul Hoskinson tarafından oluşturulmuştur ve Jonathan Toomim ile birlikte sürdürülmektedir (https://brainworkshop.sourceforge.net).
 Türkçeleştirme, Görsel duygu uyaran verisetlerinin eklenmesi ve programın amaca uygun çalışması için düzenlemeler;
